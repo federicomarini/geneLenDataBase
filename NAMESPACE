@@ -1,0 +1,14 @@
+#Everything might as well be user visible, because unfactor is kick ass
+exportPattern(".*")
+importFrom(utils, data)
+importFrom(rtracklayer,
+  ucscGenomes,
+  browserSession,
+  genome,
+  "genome<-",
+  ucscTableQuery,
+  getTable,
+  trackNames
+)
+importFrom(Biostrings,transcriptWidths)
+

@@ -1,0 +1,13 @@
+Package: geneLenDataBase
+Version: 0.99.2
+Date: 2010/04/07
+Title: Lengths of mRNA transcripts for a number of genomes
+Author: Matthew Young
+Maintainer: Matthew Young <myoung@wehi.edu.au>
+Depends: R (>= 2.10.0)
+Imports: utils, rtracklayer, Biostrings, GenomicFeatures
+LazyLoad: yes
+Description: Length of mRNA transcripts for a number of genomes and gene ID formats, largely based on UCSC table browser
+biocViews:HighThroughputSequencingData, ExperimentData, Transcription, RNAseq
+License: LGPL (>= 2)
+
