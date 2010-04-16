@@ -5,9 +5,9 @@ supportedGeneIDs=function(){
 	base=base[,c(ncol(base),1:(ncol(base)-1))]
 	rownames(base)=1:nrow(base)
 
-	txname2gene_mapinfo=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPINFO
+	mapdefs=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPDEFS
 	base$GeneID=""
-	tmp=unlist(sapply(txname2gene_mapinfo[base$db],function(u){u[4]}))
+	tmp=unlist(sapply(mapdefs[base$db],function(u){u$gene_id_type}))
 	base$GeneID[match(names(tmp),base$db)]=as.character(tmp)
 	#Add in gene symbol
 	base[nrow(base)+1,]=c("geneSymbol",'refGene','refFlat',"Gene Symbol")

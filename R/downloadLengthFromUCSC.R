@@ -29,30 +29,34 @@ downloadLengthFromUCSC=function(genome,id){
 		#This table contais all the pertenant data
 		data=getTable(query)
 		#We need to map transcripts back to some kind of gene ID
-		txname2gene_mapinfo=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPINFO[[id]]
+		mapdef=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPDEFS[[id]]
 		if(!is.null(table_name)){
 			#Gene symbol is special...
 			gene_id_type="Gene Symbol"
 			gene_id=unfactor(data$geneName)
 			tx_name=unfactor(data$name)
-		}else if(is.null(txname2gene_mapinfo)){
+		}else if(is.null(mapdef)){
 			#OT OH!  Try and guess...
 		        gene_id_type="unknown gene ids"
 			gene_id=unfactor(data$name2)
 			tx_name=unfactor(data$name)
 		}else{
-			tablename2=txname2gene_mapinfo[1L]
+			if (length(mapdef$L2Rchain)!=1L)
+				stop("cannot extract the transcript-to-gene mapping from ",
+				"the UCSC database when id='", id, "', sorry!")
+			L2Rlink1=mapdef$L2Rchain[[1L]]
+			tablename2=L2Rlink1[["tablename"]]
 			a=tryCatch({
 				query2=ucscTableQuery(session,id,table=tablename2)
 				ucsc_genetable=getTable(query2)
-				tx_name=ucsc_genetable[[txname2gene_mapinfo[2L]]]
-				gene_id=ucsc_genetable[[txname2gene_mapinfo[3L]]]
+				tx_name=ucsc_genetable[[L2Rlink1[["Lcolname"]]]]
+				gene_id=ucsc_genetable[[L2Rlink1[["Rcolname"]]]]
 		        	if(is.null(tx_name) | is.null(gene_id)){
-					stop("expected cols \"", txname2gene_mapinfo[2L], "\" or/and \"", txname2gene_mapinfo[3L], "\" not found in table ", tablename2)
+					stop("expected cols \"", L2Rlink1[["Lcolname"]], "\" or/and \"", L2Rlink1[["Rcolname"]], "\" not found in table ", tablename2)
 				}
 			        if(!is.character(tx_name)){tx_name <- as.character(tx_name)}
 			        if(!is.character(gene_id)){gene_id <- as.character(gene_id)}
-		        	gene_id_type <- txname2gene_mapinfo[4L]
+		        	gene_id_type <- mapdef$gene_id_type
 				list(gene_id_type,gene_id,tx_name)
 			},error=function(ex){
 				gene_id_type="unknown gene ids"
