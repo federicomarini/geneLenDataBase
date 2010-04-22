@@ -25,38 +25,37 @@ downloadLengthFromUCSC=function(genome,id){
 			print(tmp)
 			stop("Unsupported gene identifier.")
 		}
-		query=ucscTableQuery(session,id,table=table_name,names=NULL)
+		query=ucscTableQuery(session,track=id,table=table_name,names=NULL)
 		#This table contais all the pertenant data
-		data=getTable(query)
+		message("Fetching length data for transcripts...")
+		data=unfactor(getTable(query))
 		#We need to map transcripts back to some kind of gene ID
-		mapdef=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPDEFS[[id]]
+		#txname2gene_mapinfo=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPINFO[[id]]
+		txname2gene_mapinfo=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPDEFS[[id]]
 		if(!is.null(table_name)){
 			#Gene symbol is special...
 			gene_id_type="Gene Symbol"
 			gene_id=unfactor(data$geneName)
 			tx_name=unfactor(data$name)
-		}else if(is.null(mapdef)){
+		}else if(is.null(txname2gene_mapinfo)){
 			#OT OH!  Try and guess...
 		        gene_id_type="unknown gene ids"
 			gene_id=unfactor(data$name2)
 			tx_name=unfactor(data$name)
 		}else{
-			if (length(mapdef$L2Rchain)!=1L)
-				stop("cannot extract the transcript-to-gene mapping from ",
-				"the UCSC database when id='", id, "', sorry!")
-			L2Rlink1=mapdef$L2Rchain[[1L]]
-			tablename2=L2Rlink1[["tablename"]]
+			message("Fetching gene ID to transcript mappings...")
+			tablename2=as.character(txname2gene_mapinfo[[1]][[1]]['tablename'])
 			a=tryCatch({
-				query2=ucscTableQuery(session,id,table=tablename2)
-				ucsc_genetable=getTable(query2)
-				tx_name=ucsc_genetable[[L2Rlink1[["Lcolname"]]]]
-				gene_id=ucsc_genetable[[L2Rlink1[["Rcolname"]]]]
+				query2=ucscTableQuery(session,track=id,table=tablename2)
+				ucsc_genetable=unfactor(getTable(query2))
+				tx_name=ucsc_genetable[[txname2gene_mapinfo[[1]][[1]]['Lcolname']]]
+				gene_id=ucsc_genetable[[txname2gene_mapinfo[[1]][[1]]['Rcolname']]]
 		        	if(is.null(tx_name) | is.null(gene_id)){
-					stop("expected cols \"", L2Rlink1[["Lcolname"]], "\" or/and \"", L2Rlink1[["Rcolname"]], "\" not found in table ", tablename2)
+					stop("expected cols \"", txname2gene_mapinfo[[1]][[1]]['Lcolname'], "\" or/and \"", txname2gene_mapinfo[[1]][[1]]['Rcolname'], "\" not found in table ", tablename2)
 				}
 			        if(!is.character(tx_name)){tx_name <- as.character(tx_name)}
 			        if(!is.character(gene_id)){gene_id <- as.character(gene_id)}
-		        	gene_id_type <- mapdef$gene_id_type
+		        	gene_id_type <- txname2gene_mapinfo[[2]]
 				list(gene_id_type,gene_id,tx_name)
 			},error=function(ex){
 				gene_id_type="unknown gene ids"
@@ -79,3 +78,4 @@ downloadLengthFromUCSC=function(genome,id){
 		#If it is possible, it would be nice to have a routine which added the downloaded data to the pool of locally available databases
 		length_data
 }
+
