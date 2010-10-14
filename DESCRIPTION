@@ -1,6 +1,6 @@
 Package: geneLenDataBase
-Version: 0.99.4
-Date: 2010/04/22
+Version: 0.99.5
+Date: 2010/10/14
 Title: Lengths of mRNA transcripts for a number of genomes
 Author: Matthew Young
 Maintainer: Matthew Young <myoung@wehi.edu.au>
