@@ -10,5 +10,5 @@ importFrom(rtracklayer,
   getTable,
   trackNames
 )
-importFrom(Biostrings,transcriptWidths)
+importFrom(GenomicFeatures,transcriptWidths)
 
