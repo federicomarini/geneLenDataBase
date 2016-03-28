@@ -6,6 +6,6 @@ supportedGenomes=function(){
 	valid_ids=sapply(split(repo[,2],repo[,1]),paste,collapse=",")
 	valid_ids=valid_ids[which(names(valid_ids)%in%base$db)]
 	base$AvailableGeneIDs[match(names(valid_ids),base$db)]=as.character(valid_ids)
-	base
+	avail = base[base$AvailableGeneIDs != "",]
+	avail
 }
-

@@ -1,7 +1,7 @@
 supportedGeneIDs=function(){
 	base=unfactor(GenomicFeatures:::supportedUCSCtables())
 	#Having the db entries as row names gets confusing, so fix that
-	base$db=rownames(base)
+ 	base$db=rownames(base)
 	base=base[,c(ncol(base),1:(ncol(base)-1))]
 	rownames(base)=1:nrow(base)
 	#Old version of GenomicFeatures
@@ -21,5 +21,7 @@ supportedGeneIDs=function(){
 	valid_genomes=sapply(split(repo[,1],repo[,2]),paste,collapse=",")
 	valid_genomes=valid_genomes[which(names(valid_genomes)%in%base$db)]
 	base$AvailableGenomes[match(names(valid_genomes),base$db)]=as.character(valid_genomes)
-	base
+  
+  avail = base[base$db == "knownGene" | base$db == "vegaGene" | base$db == "geneSymbol" | base$db == "ensGene",]
+  avail
 }
