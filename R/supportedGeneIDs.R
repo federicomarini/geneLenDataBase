@@ -14,7 +14,7 @@ supportedGeneIDs=function(){
 	tmp=unlist(lapply(txname2gene_mapinfo[base$db],function(u){u[[2]]}))
 	base$GeneID[match(names(tmp),base$db)]=as.character(tmp)
 	#Add in gene symbol
-	base[nrow(base)+1,]=c("geneSymbol",'refGene','refFlat',"Gene Symbol")
+	base[nrow(base)+1,]=c("geneSymbol",'refGene','refFlat',"Gene Symbol","")
 	base$AvailableGenomes=""
 	repo=grep(".*\\..*\\.LENGTH",as.data.frame(data(package="geneLenDataBase")$results,stringsAsFactors=FALSE)$Item,ignore.case=TRUE,value=TRUE)
 	repo=matrix(unlist(strsplit(repo,"\\.")),ncol=3,byrow=TRUE)
