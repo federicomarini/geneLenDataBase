@@ -11,7 +11,6 @@ supportedGeneIDs=function(){
 
 	#NEW Ant 28/09/16
 	tmp=unlist(lapply(txname2gene_mapinfo[base$tablename],function(u){u[[2]]}))
-	base$GeneID = sapply(base$tablename,function(u){ifelse(u %in% names(tmp),tmp[u],"")})	
 	base$GeneID[match(names(tmp),base$tablename)]=as.character(tmp)
 
 	#Add in gene symbol

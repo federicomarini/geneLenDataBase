@@ -10,3 +10,5 @@ LazyLoad: yes
 Description: Length of mRNA transcripts for a number of genomes and gene ID formats, largely based on UCSC table browser
 biocViews: ExperimentData, Genome
 License: LGPL (>= 2)
+NeedsCompilation: no
+Packaged: 2016-09-29 02:18:00 UTC; anthonyh
