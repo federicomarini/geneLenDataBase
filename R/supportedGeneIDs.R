@@ -19,9 +19,9 @@ supportedGeneIDs=function(){
 	repo=grep(".*\\..*\\.LENGTH",as.data.frame(data(package="geneLenDataBase")$results,stringsAsFactors=FALSE)$Item,ignore.case=TRUE,value=TRUE)
 	repo=matrix(unlist(strsplit(repo,"\\.")),ncol=3,byrow=TRUE)
 	valid_genomes=sapply(split(repo[,1],repo[,2]),paste,collapse=",")
-	valid_genomes=valid_genomes[which(names(valid_genomes)%in%base$db)]
-	base$AvailableGenomes[match(names(valid_genomes),base$db)]=as.character(valid_genomes)
+	valid_genomes=valid_genomes[which(names(valid_genomes)%in%base$tablename)]
+	base$AvailableGenomes[match(names(valid_genomes),base$tablename)]=as.character(valid_genomes)
   
-  avail = base[base$db == "knownGene" | base$db == "vegaGene" | base$db == "geneSymbol" | base$db == "ensGene",]
+  avail = base[base$tablename == "knownGene" | base$tablename == "vegaGene" | base$tablename == "geneSymbol" | base$tablename == "ensGene",]
   avail
 }
