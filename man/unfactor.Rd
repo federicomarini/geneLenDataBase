@@ -18,7 +18,7 @@ unfactor(var)
 }
 }
 \details{
-As factors are their own type, to remove factors we must convert each level into another type.  This is currently done using "typeless" behaviour: a factor is converted to a numeric vector if this can be done without inducing NAs, otherwise it is coerced using as.character. Currently supported types are: /code{factor}, /code{data.frame} and /code{list}.
+As factors are their own type, to remove factors we must convert each level into another type.  This is currently done using "typeless" behaviour: a factor is converted to a numeric vector if this can be done without inducing NAs, otherwise it is coerced using as.character. Currently supported types are: \code{factor}, \code{data.frame} and \code{list}.
 }
 \value{
 The variable with all factors converted to characters or numbers (see \code{details}).
