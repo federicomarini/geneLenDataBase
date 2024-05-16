@@ -1,8 +1,8 @@
 supportedGeneIDs=function(){
-	base=unfactor(GenomicFeatures:::supportedUCSCtables())
+	base=unfactor(txdbmaker::supportedUCSCtables())
 
 	#Current version
-	txname2gene_mapinfo=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPDEFS
+	txname2gene_mapinfo=txdbmaker:::.UCSC_TXNAME2GENEID_MAPDEFS
 	base$GeneID=""
 
 	#Old version
