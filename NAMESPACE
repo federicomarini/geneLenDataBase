@@ -11,4 +11,4 @@ importFrom(rtracklayer,
   trackNames
 )
 importFrom(GenomicFeatures,transcriptWidths)
-
+importFrom(txdbmaker, supportedUCSCtables)
