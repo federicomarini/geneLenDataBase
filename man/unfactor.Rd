@@ -46,7 +46,8 @@ x
 unfactor(x)
 
 #A data.frame
-x <- data.frame(player <- c("Alice", "Bob", "Mary", "Fred"), score <- factor(c(9, 7, 8, 9)), stringsAsFactors=TRUE)
+x <- data.frame(player <- c("Alice", "Bob", "Mary", "Fred"), 
+                score <- factor(c(9, 7, 8, 9)), stringsAsFactors=TRUE)
 x$player
 x$score
 y <- unfactor(x)
