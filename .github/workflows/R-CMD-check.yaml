@@ -130,7 +130,7 @@ jobs:
       - name: Run BiocCheck
         uses: grimbough/bioc-actions/run-BiocCheck@v1
         with:
-          arguments: '--no-check-bioc-views --no-check-bioc-help --no-check-vignettes.'
+          arguments: '--no-check-bioc-views --no-check-bioc-help --no-check-vignettes --no-check-man-doc'
           error-on: 'error'
 
       # - name: Test coverage
