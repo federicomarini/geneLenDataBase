@@ -28,6 +28,8 @@
 #' 
 #' @author Matthew D. Young \email{myoung@@wehi.edu.au}
 #' 
+#' @export
+#' 
 #' @seealso \code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}}
 #' 
 #' @examples
