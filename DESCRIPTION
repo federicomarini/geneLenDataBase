@@ -16,6 +16,8 @@ Imports:
     rtracklayer, 
     GenomicFeatures (>= 1.57.0), 
     txdbmaker
+URL: https://github.com/federicomarini/geneLenDataBase
+BugReports: https://github.com/federicomarini/geneLenDataBase/issues
 License: LGPL (>= 2)
 biocViews: 
     ExperimentData, Genome
