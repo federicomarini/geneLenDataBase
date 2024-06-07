@@ -5,7 +5,10 @@ Date: 2019-04-26
 Author: Matthew Young
 Maintainer: Matthew Young <my4@sanger.ac.uk>, Nadia Davidson <nadia.davidson@mcri.edu.au>
 Description: Length of mRNA transcripts for a number of genomes and gene ID 
-    formats, largely based on UCSC table browser.
+    formats, largely based on UCSC table browser. Data objects are provided as
+    individual pieces of information to be retrieved and loaded. A variety of 
+    different gene identifiers and genomes is supported to ensure wide 
+    applicability.
 Depends: 
     R (>= 2.11.0)
 Imports: 
