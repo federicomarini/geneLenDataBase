@@ -33,7 +33,7 @@ downloadLengthFromUCSC <- function(genome, id) {
   data <- unfactor(getTable(query))
   # We need to map transcripts back to some kind of gene ID
   # txname2gene_mapinfo=GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPINFO[[id]]
-  txname2gene_mapinfo <- GenomicFeatures:::.UCSC_TXNAME2GENEID_MAPDEFS[[id]]
+  txname2gene_mapinfo <- txdbmaker:::.UCSC_TXNAME2GENEID_MAPDEFS[[id]]
   if (!is.null(table_name)) {
     # Gene symbol is special...
     gene_id_type <- "Gene Symbol"
