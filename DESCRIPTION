@@ -1,18 +1,38 @@
 Package: geneLenDataBase
 Title: Lengths of mRNA transcripts for a number of genomes
-Version: 1.41.1
-Date: 2019-04-26
-Author: Matthew Young
-Maintainer: Matthew Young <my4@sanger.ac.uk>, Nadia Davidson <nadia.davidson@mcri.edu.au>
+Version: 1.41.2
+Date: 2024-06-08
+Authors@R: 
+    c(
+        person(
+            given = "Matthew", family = "Young", role = c("aut"), 
+            email = "my4@sanger.ac.uk"
+        ),
+        person(
+            given = "Nadia", family = "Davidson", role = c("aut"), 
+            email = "nadia.davidson@mcri.edu.au"
+        ),
+        person(
+            given = "Federico", family = "Marini", role = c("ctb", "cre"), 
+            email = "marinif@uni-mainz.de", comment = c(ORCID = "0000-0003-3252-7758")
+        )
+    )
 Description: Length of mRNA transcripts for a number of genomes and gene ID 
-    formats, largely based on UCSC table browser.
+    formats, largely based on UCSC table browser. Data objects are provided as
+    individual pieces of information to be retrieved and loaded. A variety of 
+    different gene identifiers and genomes is supported to ensure wide 
+    applicability.
 Depends: 
     R (>= 2.11.0)
 Imports: 
     utils, 
     rtracklayer, 
-    GenomicFeatures (>= 1.57.0), 
+    GenomicFeatures, 
     txdbmaker
+URL: https://github.com/federicomarini/geneLenDataBase
+BugReports: https://github.com/federicomarini/geneLenDataBase/issues
 License: LGPL (>= 2)
 biocViews: 
     ExperimentData, Genome
+RoxygenNote: 7.3.1
+Encoding: UTF-8
