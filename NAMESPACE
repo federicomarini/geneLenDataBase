@@ -5,12 +5,14 @@ export(supportedGeneIDs)
 export(supportedGenomes)
 export(unfactor)
 importFrom(GenomicFeatures,transcriptWidths)
-importFrom(rtracklayer,"genome<-")
-importFrom(rtracklayer,browserSession)
-importFrom(rtracklayer,genome)
-importFrom(rtracklayer,getTable)
-importFrom(rtracklayer,trackNames)
-importFrom(rtracklayer,ucscGenomes)
-importFrom(rtracklayer,ucscTableQuery)
+importFrom(rtracklayer,
+  "genome<-",
+  browserSession,
+  genome,
+  getTable,
+  trackNames,
+  ucscGenomes,
+  ucscTableQuery
+)
 importFrom(txdbmaker,supportedUCSCtables)
 importFrom(utils,data)
