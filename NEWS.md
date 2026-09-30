@@ -1,4 +1,4 @@
-# geneLenDataBase 1.46.0
+# geneLenDataBase 1.50.0
 
 * The provided `data` objects have been resaved with a more efficient compression ("xz"), enabling a 10-15% reduction of the size taken up by the whole package - this change should not present any visible change to the end-user, as the objects are identical once loaded
 
