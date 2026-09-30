@@ -11,7 +11,7 @@
 #' 
 #' @importFrom utils data
 #' @importFrom rtracklayer ucscGenomes browserSession genome "genome<-" 
-#' ucscTableQuery getTable trackNames
+#'   ucscTableQuery getTable trackNames
 #' @importFrom GenomicFeatures transcriptWidths
 #' @importFrom txdbmaker supportedUCSCtables
 #'

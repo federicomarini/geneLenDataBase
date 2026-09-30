@@ -1,3 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^data_old$
+^resaved_data_byhand$
